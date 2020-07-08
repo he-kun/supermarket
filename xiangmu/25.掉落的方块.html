@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * { margin: 0;padding: 0;}
+    .xxx {position: absolute; border: 2px solid red;}
+</style>
+
+<body id='xx'>
+
+</body>
+<script>
+
+
+    document.documentElement.onmousedown = function (ev) {
+        var odiv = document.createElement('div')
+        document.body.appendChild(odiv);
+        odiv.className = 'xxx'
+
+        var ev = ev || window.event;
+        var xx=ev.pageX
+        var yy=ev.pageY
+        
+        odiv.style.top = yy + "px";
+        odiv.style.left = xx + "px";
+
+
+        document.onmousemove = function (ev) {
+            var ev = ev || window.event;
+                console.log( ev.pageX - xx + "px",ev.pageY- yy + "px")
+            odiv.style.width = ev.pageX - xx + "px"
+            odiv.style.height = ev.pageY - yy + "px"
+        }
+        //4.鼠标抬起事件
+
+        document.onmouseup = function () {
+
+            document.onmousemove = null;
+            var cctv = setInterval(() => {
+                yy = yy + 1
+                odiv.style.top = yy + "px"
+            }, 10);
+            //             let cctv=setInterval(()=>{
+            //                 let oBox=document.getElementsByTagName('div')
+            //                 let gao= xo++
+            //                 // console.log(gao)
+            //                 oBox[a].style.top=gao+"px"
+            //             },10)
+
+                    setInterval(() => {
+                        if (yy <= 1000) {
+                            console.log(yy)
+                        } else {
+                            clearInterval(cctv)
+                        }
+                            },50)
+            }
+              
+			}
+
+
+//    onclick=function(){
+//         let xx=document.createElement('div')
+//         document.body.append(xx)
+//    }
+
+</script>
+
+</html>

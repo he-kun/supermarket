@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{height: 2000px; background: lightblue;}
+			.top{width: 50px; height: 50px; border:1px solid #ADD8E6; background: lightcyan; 
+			border-radius: 50%; text-align: center; line-height: 50px;
+			position: fixed; bottom:30px; right:30px; display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top" id="top">↑</div>
+		<script type="text/javascript">
+			//1.获取元素
+			var oTop = document.getElementById('top');
+			//滚动事件,当你让滚动条滚动时会触发这个事件
+			window.onscroll = function(){
+				console.log("滚动事件触发了");
+				var top = document.documentElement.scrollTop;
+				if(top >= 300){
+					oTop.style.display = 'block';
+				}else{
+					oTop.style.display = 'none';
+				}
+			}
+			oTop.onclick = function(){
+				document.documentElement.scrollTop  = 0;
+			}
+			
+		</script>
+	</body>
+</html>
